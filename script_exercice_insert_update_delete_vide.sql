@@ -5,13 +5,22 @@
 
 
 /* no 1-2 création de la base de données si la database existe la détruire*/
+--use master
+--go
+--DROP DATABASE IF EXISTS k2fl_bd
+--go
+--CREATE DATABASE k2fl_bd
+--go
+
 use master
 go
-DROP DATABASE IF EXISTS k2fl_bd
-go
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'k2fl_bd')
+BEGIN
+    ALTER DATABASE k2fl_bd SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	drop database k2fl_bd
+END
 CREATE DATABASE k2fl_bd
 go
-
 /*no 3 création de tbl_session  */
 
 use k2fl_bd
@@ -153,6 +162,8 @@ constraint prealable_FK foreign key (no_coursPrealable) references tbl_cours(no_
 constraint PK_prealable primary key (no_coursDeBase, no_coursPrealable)
 )
 
+insert into tbl_prealable values ('4204B2BA', '4203B2BA')
+go
 
 /* 
 select * from tbl_prealable 
@@ -163,7 +174,10 @@ select * from tbl_inscription
 
 /* no 6 */
 
-
+insert into tbl_etudiant (no_da, nom, prenom, email)
+select '25000' + str(BusinessEntityID,2) as BusinessEntityID,FirstName,LastName, FirstName + LastName '@gmail.com'
+from AdventureWorks2022.Person.person
+where BusinessEntityID >10 and BusinessEntityID< 20
 
 /* 
 select * from AdventureWorks2022.Person.person 
@@ -173,6 +187,12 @@ select * from tbl_etudiant
 
 /* no 7 */
 
+insert into tbl_cours (no_cours, nom_cours, ponderation) values ('4204A2BA','méthode de développement', '2-1-1')
+insert into tbl_offreCours (no_cours, no_session) values ('4204A2BA', 'H2025')
+insert into tbl_inscription(no_da, no_offreCours) 
+select no_da , (select no_offreCours from tbl_offreCours where no_cours = '4204A2BA' and no_session = 'H2025') 
+from tbl_etudiant
+go
 /* 
 select * from tbl_cours
 select * from tbl_offreCours
@@ -181,6 +201,7 @@ select * from tbl_inscription
 */
 
 /* no 8 */
+
 
 
 /*
