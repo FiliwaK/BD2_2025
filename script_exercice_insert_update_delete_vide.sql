@@ -202,8 +202,16 @@ select * from tbl_inscription
 
 /* no 8 */
 
+delete from tbl_inscription 
+where no_da = '2500017'
 
 
+delete from tbl_inscription
+where no_da in (select no_da from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown')
+
+delete from tbl_etudiant where no_da = '2500017'
+
+delete from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown'
 /*
 select * from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown'
 select * from tbl_inscription 
@@ -212,10 +220,29 @@ select * from tbl_etudiant
 
 
 /*  no 9 */
-/* select * from tbl_cours */
+select * from tbl_cours 
+
+/* ajouter une colonne */
+
+alter table tbl_cours
+add pond nchar(5)
+
+/* transferer les donnée */
+
+UPDATE TBL_COURS SET POND = PONDERATION 
+
+/* detruire pondération */
+
+ALTER TABLE TBL_COURS DROP CONSTRAINT pond_Default
+
+ALTER TABLE TBL_COURS DROP COLUMN PONDERATION
+
+
 
 /* si vous avez enlevé une contrainte, n'oubliez pas de la remettre */
 
+alter table tbl_cours
+add constraint pond_Default default '1-1-1' for pond
 
 /*	Faire générer un gros select (concevoir une requête dans l’éditeur) sur toutes vos tables 
 	pour bien voir le resultat final. */
