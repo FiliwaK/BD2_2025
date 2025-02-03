@@ -37,9 +37,11 @@ no_cours nchar(8) primary key,
 nom_cours nvarchar(100), 
 ponderation nchar(5)
 )
+GO
 
 alter table tbl_cours
-add constraint pond_Default default '1-1-1' for ponderation 
+add constraint pond_Default default '1-1-1' for ponderation
+GO
 
 /*no 5 tbl_offreCours */
 create table tbl_offreCours(
@@ -48,6 +50,7 @@ no_session nchar(5) references tbl_session(no_session) on update cascade,
 no_cours nchar(8) references tbl_cours(no_cours) on update cascade,
 constraint Contrainte_unique unique (no_session, no_cours)
 )
+GO
 
 
 /* no 6 tbl_etudiant */
@@ -58,6 +61,7 @@ nom nvarchar(100),
 prenom nvarchar(100),
 email nvarchar(100) null 
 )
+GO
 
 
 /* no 7 table tbl_inscription, */
@@ -67,6 +71,7 @@ no_da nchar(7) not null,
 no_offreCours int not null, 
 note decimal(5,2)
 )
+GO
 
 
 /* no 8 modification tbl_inscription */
@@ -75,7 +80,7 @@ add constraint PK_inscription primary key (no_da, no_offreCours),
  constraint limit_note check (note between 0 and 100),
  constraint FK_inscription_da foreign key (no_da) references tbl_etudiant(no_da)on update cascade, 
  constraint FK_inscription_offreCours foreign key (no_offreCours) references tbl_offreCours(no_offreCours)
-
+GO
 
 /* no 9 check sur session A H E*/
 
@@ -125,7 +130,7 @@ sp_helptext check_session
 /* no 1*/
 
 insert into tbl_etudiant (no_da, nom, prenom, email) values ('2342864', 'Kouakou', 'Fabrice', 'kouakoufabrice7@gmail.com')
-
+GO
 
 /* select * from tbl_etudiant */
 
@@ -138,18 +143,20 @@ go
 /* no 3 */
 
 update tbl_cours set no_cours = '4203B2BA' where no_cours = '4203B1BA' 
-
+GO
 
 /* select * from tbl_cours*/ 
 
 /* no 4 */
 insert into tbl_session(no_session) values ('H2025')
+GO
 
 insert into tbl_offreCours (no_cours, no_session) values ('4203B2BA', 'H2025')
-
+GO
 --select* from tbl_offreCours 
 
 insert into tbl_inscription (no_da, no_offreCours) values ('2342864', (select no_offreCours from tbl_offreCours where no_cours = '4203B2BA' and no_session = 'H2025')) 
+GO
 
 /* select * from tbl_inscription */
 /* no 5 */
@@ -178,6 +185,7 @@ insert into tbl_etudiant (no_da, nom, prenom, email)
 select '25000' + str(BusinessEntityID,2) as BusinessEntityID,FirstName,LastName, FirstName + LastName '@gmail.com'
 from AdventureWorks2022.Person.person
 where BusinessEntityID >10 and BusinessEntityID< 20
+GO
 
 /* 
 select * from AdventureWorks2022.Person.person 
@@ -204,14 +212,16 @@ select * from tbl_inscription
 
 delete from tbl_inscription 
 where no_da = '2500017'
+GO
 
+--delete from tbl_inscription
+--where no_da in (select no_da from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown')
 
-delete from tbl_inscription
-where no_da in (select no_da from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown')
 
 delete from tbl_etudiant where no_da = '2500017'
+GO
 
-delete from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown'
+--delete from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown'
 /*
 select * from tbl_etudiant where prenom = 'Kevin' and nom = 'Brown'
 select * from tbl_inscription 
@@ -226,23 +236,26 @@ select * from tbl_cours
 
 alter table tbl_cours
 add pond nchar(5)
+GO
 
 /* transferer les donnée */
 
 UPDATE TBL_COURS SET POND = PONDERATION 
-
+GO
 /* detruire pondération */
 
 ALTER TABLE TBL_COURS DROP CONSTRAINT pond_Default
+GO
 
 ALTER TABLE TBL_COURS DROP COLUMN PONDERATION
-
+GO
 
 
 /* si vous avez enlevé une contrainte, n'oubliez pas de la remettre */
 
 alter table tbl_cours
 add constraint pond_Default default '1-1-1' for pond
+GO
 
 /*	Faire générer un gros select (concevoir une requête dans l’éditeur) sur toutes vos tables 
 	pour bien voir le resultat final. */
