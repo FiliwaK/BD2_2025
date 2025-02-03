@@ -230,7 +230,7 @@ select * from tbl_etudiant
 
 
 /*  no 9 */
-select * from tbl_cours 
+--select * from tbl_cours 
 
 /* ajouter une colonne */
 
