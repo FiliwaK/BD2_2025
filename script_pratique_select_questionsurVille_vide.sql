@@ -43,6 +43,7 @@ go
 
 	select no_region, max(superficieKMcarree) from tbl_ville group by no_region having max(superficieKMcarree) > 4000 
 
+
 /*	8- Combien y a t-il de ville qui ont une population plus grande que 100 000 habitants
 	Mettez un nom de colonne pertinent.
 	(1 ligne : 10)*/
@@ -51,13 +52,13 @@ go
 
 /*	9- Quel est la plus grande population ?  (1801546 )*/
 
-	select max(population) from tbl_ville
+	select max(population) as 'population max' from tbl_ville
 
 /*  10- Quelle est le nom de la ville qui la plus grande population 
    Servez-vous de votre instruction précédente en la plaçant dans le where de celle-ci. 
    Vous pourrez comparer la population à la plus grande population */
 
-   select nomVille from tbl_ville where population = 1801546
+   select nomVille from tbl_ville where population = (select max(population) as 'population max' from tbl_ville)
    
 
 
