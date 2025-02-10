@@ -29,7 +29,7 @@ go
 create table tbl_session(
 no_session nchar(5) primary key 
 )
-
+go
 /*no 4 tbl_cours */
 
 create table tbl_cours(
@@ -168,6 +168,7 @@ constraint prealableDeBase_FK foreign key (no_coursDeBase) references tbl_cours(
 constraint prealable_FK foreign key (no_coursPrealable) references tbl_cours(no_cours), 
 constraint PK_prealable primary key (no_coursDeBase, no_coursPrealable)
 )
+go
 
 insert into tbl_prealable values ('4204B2BA', '4203B2BA')
 go
@@ -260,3 +261,31 @@ GO
 /*	Faire générer un gros select (concevoir une requête dans l’éditeur) sur toutes vos tables 
 	pour bien voir le resultat final. */
 
+update tbl_inscription
+	set note = 80 + convert(int,substring(no_da,7,1))
+	from tbl_offreCours inner join tbl_inscription
+	on tbl_inscription.no_offreCours = tbl_offreCours.no_offreCours
+	where tbl_offreCours.no_cours = '4204A2BA' and no_session = 'H2025'
+	go
+/* Mettre une note pour l'etudiant inscrit au cours 4203B2BA  */
+	update tbl_inscription
+	set note = 70
+	from tbl_offreCours inner join tbl_inscription
+	on tbl_inscription.no_offreCours = tbl_offreCours.no_offreCours
+	where tbl_offreCours.no_cours = '4203B2BA'and no_session = 'H2025'
+
+/*un ajout de cours avec note pour Ovidiu Cracium OvidiuCracium@gmail.com 2500011*/
+	insert into tbl_inscription (no_offreCours,no_da,note)
+	values ((select no_offreCours 
+				from tbl_offreCours 
+				where no_cours = '4203B2BA'and no_session = 'H2025'),
+				(select no_da 
+				from tbl_etudiant 
+				where nom = 'Ovidiu' and prenom = 'Cracium' ),
+				85)
+go
+
+/* ajouter un etudiant qui ne suit pas de cours */
+	insert into tbl_etudiant (no_da,prenom,nom,email)
+	values ('2554322','Jean','Dit','jDit@gmail.com')
+	go
