@@ -26,7 +26,7 @@ go
 	truc : ajouter distinct dans le count (count(distinct ...) pour compter combien de catégories différentes
 	(8 lignes)*/
 	 
-	 select AUTEURS.NOM, AUTEURS.PRENOM, count(distinct CATEGORIES.ID_CATEGORIE) from AUTEURS inner join LIVRES_AUTEURS on AUTEURS.ID_AUTEUR = LIVRES_AUTEURS.ID_AUTEUR 
+	 select AUTEURS.NOM, AUTEURS.PRENOM, count(distinct CATEGORIES.ID_CATEGORIE) as 'nombre de categorie' from AUTEURS inner join LIVRES_AUTEURS on AUTEURS.ID_AUTEUR = LIVRES_AUTEURS.ID_AUTEUR 
 	 inner join LIVRES on LIVRES_AUTEURS.ID_LIVRE = LIVRES.ID_LIVRE 
 	 inner join CATEGORIES on CATEGORIES.ID_CATEGORIE = LIVRES.ID_CATEGORIE
 	 group by AUTEURS.NOM, AUTEURS.PRENOM
