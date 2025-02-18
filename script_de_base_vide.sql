@@ -91,9 +91,10 @@ go
 alter table tbl_employee
 alter column email nvarchar(200) not null
  
-
+ --pour ajouter les piece il faut prendre ceux qui n'ont pas de generique 
+  
 /* 10-m'assure qu'il n'y a pas 2 pièces pareils pour un projet */
-/* 11- unicité */
+/* 11- unicité */ 
 
 
 /* PARTIE 3 */
