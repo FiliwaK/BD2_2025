@@ -289,3 +289,18 @@ go
 	insert into tbl_etudiant (no_da,prenom,nom,email)
 	values ('2554322','Jean','Dit','jDit@gmail.com')
 	go
+
+
+	insert into tbl_session (no_session)
+values ('H2024')
+go
+insert into tbl_offreCours (no_session,no_cours)
+values('H2024','4204A2BA')
+go
+
+
+insert into tbl_inscription(no_da,no_offreCours)
+select no_da,(select no_offreCours from tbl_offreCours where no_cours = '4204A2BA' and no_session ='H2024') from tbl_etudiant
+ where no_da > '2400031' and no_da < '2400040'
+go
+
