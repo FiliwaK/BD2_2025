@@ -61,13 +61,16 @@ go
 	id_stock int identity primary key, 
 	quantite_stock int,
 	quantite_prevu int,
+	check (quantite_stock >= 0),
 	id_piece int references tbl_piece(id_piece) not null,
 	id_projet int references tbl_projet(id_projet) not null 
 	)
 	go
 
 	alter table tbl_stock
-	add constraint 
+	add constraint CK_quantitePrevu Check (quantite_prevu >= 0)
+
+	go
 
 /*  5- Cas où toutes les contraintes sont définis APRÈS la creation de la table (dans le cas d'une table avec clé étrangère)*/
 	
@@ -75,7 +78,7 @@ go
 
 		create table tbl_impute(
 		quantite_impute int,
-		date_imputee int,
+		date_imputee date,
 		id_employee int not null,
 		id_stock int not null
 		)
@@ -83,13 +86,17 @@ go
 
 		alter table tbl_impute
 		add constraint FK_impute_employee foreign key (id_employee) references tbl_employee(id_employee),
-		constraint FK_impute_stock foreign key (id_stock) references tbl_stock(id_stock)
+		constraint FK_impute_stock foreign key (id_stock) references tbl_stock(id_stock),
+		constraint CK_quantiteImpute Check (quantite_impute >= 0),
+		constraint Dt_dateImpute check (date_imputee <= date.now)
+
 		go
 
 /* 9- modification d'un null en not null */
 
 alter table tbl_employee
 alter column email nvarchar(200) not null
+add constraint Ck_email Check (email like %[@]%)
  
  --pour ajouter les piece il faut prendre ceux qui n'ont pas de generique 
   
