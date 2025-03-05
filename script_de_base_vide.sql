@@ -27,14 +27,14 @@ go
 
 create table tbl_compagnie(
 id_compagnie int primary key,
-nom nvarchar(200) 
+nom nvarchar(200) unique
 )
 go
 
 create table tbl_piece(
 id_piece int identity primary key,
 description nvarchar(200),
-numeroUtilise int
+numeroIndustrie int unique
 )
 go
 
@@ -42,16 +42,33 @@ create table tbl_employee(
 id_employee int identity primary key,
 nom nvarchar(200),
 prenom nvarchar(200),
-email nvarchar(200) null,
+email nvarchar(200) null 
 )
 go
+
+
+/* 9- modification d'un null en not null */
+
+alter table tbl_employee
+alter column email nvarchar(200) not null
+go
+
+alter table tbl_employee 
+add constraint UQ_email unique (email)
+go
+
+alter table tbl_employee
+add constraint Ck_email Check (email like '%[@]%')
+go
+
+
 
 /*	4- Cas òu toutes les contraintes sont définis DANS le create de la table, 
 	auncune contrainte après le create (dans le cas d'une table avec une clé étrangère) */
 
 	create table tbl_projet(
 	id_projet int identity primary key,
-	nom nvarchar(200),
+	nom nvarchar(200) unique,
 	description nvarchar(200), 
 	id_compagnie int references tbl_compagnie(id_compagnie) not null
 	)
@@ -62,15 +79,13 @@ go
 	quantite_stock int,
 	quantite_prevu int,
 	check (quantite_stock >= 0),
+	Check (quantite_prevu >= 0),
 	id_piece int references tbl_piece(id_piece) not null,
-	id_projet int references tbl_projet(id_projet) not null 
+	id_projet int references tbl_projet(id_projet) not null,
+	constraint UQ_projetPiece unique (id_piece, id_projet)
 	)
 	go
 
-	alter table tbl_stock
-	add constraint CK_quantitePrevu Check (quantite_prevu >= 0)
-
-	go
 
 /*  5- Cas où toutes les contraintes sont définis APRÈS la creation de la table (dans le cas d'une table avec clé étrangère)*/
 	
@@ -88,16 +103,11 @@ go
 		add constraint FK_impute_employee foreign key (id_employee) references tbl_employee(id_employee),
 		constraint FK_impute_stock foreign key (id_stock) references tbl_stock(id_stock),
 		constraint CK_quantiteImpute Check (quantite_impute >= 0),
-		constraint Dt_dateImpute check (date_imputee <= date.now)
+		constraint Dt_dateImpute check (date_imputee <= getDate())
 
 		go
 
-/* 9- modification d'un null en not null */
 
-alter table tbl_employee
-alter column email nvarchar(200) not null
-add constraint Ck_email Check (email like %[@]%)
- 
  --pour ajouter les piece il faut prendre ceux qui n'ont pas de generique 
   
 /* 10-m'assure qu'il n'y a pas 2 pièces pareils pour un projet */
