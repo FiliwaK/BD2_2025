@@ -53,6 +53,8 @@ alter table tbl_employee
 alter column email nvarchar(200) not null
 go
 
+
+
 alter table tbl_employee 
 add constraint UQ_email unique (email)
 go
