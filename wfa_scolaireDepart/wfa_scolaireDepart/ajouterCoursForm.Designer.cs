@@ -40,75 +40,76 @@
             // ponderationLabel
             // 
             ponderationLabel.Font = new Font("Segoe UI", 12F);
-            ponderationLabel.Location = new Point(43, 167);
+            ponderationLabel.Location = new Point(38, 125);
             ponderationLabel.Name = "ponderationLabel";
-            ponderationLabel.Size = new Size(119, 28);
+            ponderationLabel.Size = new Size(104, 21);
             ponderationLabel.TabIndex = 34;
             ponderationLabel.Text = "Pondération";
             // 
             // ponderationTextBox
             // 
             ponderationTextBox.Font = new Font("Segoe UI", 12F);
-            ponderationTextBox.Location = new Point(233, 167);
+            ponderationTextBox.Location = new Point(204, 125);
             ponderationTextBox.Margin = new Padding(3, 2, 3, 2);
             ponderationTextBox.Name = "ponderationTextBox";
-            ponderationTextBox.Size = new Size(247, 34);
+            ponderationTextBox.Size = new Size(217, 29);
             ponderationTextBox.TabIndex = 33;
             // 
             // nomCoursLlabel
             // 
             nomCoursLlabel.AutoSize = true;
             nomCoursLlabel.Font = new Font("Segoe UI", 12F);
-            nomCoursLlabel.Location = new Point(43, 103);
+            nomCoursLlabel.Location = new Point(38, 77);
             nomCoursLlabel.Name = "nomCoursLlabel";
-            nomCoursLlabel.Size = new Size(136, 28);
+            nomCoursLlabel.Size = new Size(109, 21);
             nomCoursLlabel.TabIndex = 32;
             nomCoursLlabel.Text = "Nom du cours";
             // 
             // nomCoursTextBox
             // 
             nomCoursTextBox.Font = new Font("Segoe UI", 12F);
-            nomCoursTextBox.Location = new Point(233, 103);
+            nomCoursTextBox.Location = new Point(204, 77);
             nomCoursTextBox.Margin = new Padding(3, 2, 3, 2);
             nomCoursTextBox.Name = "nomCoursTextBox";
-            nomCoursTextBox.Size = new Size(247, 34);
+            nomCoursTextBox.Size = new Size(217, 29);
             nomCoursTextBox.TabIndex = 31;
             // 
             // noCoursLabel
             // 
             noCoursLabel.AutoSize = true;
             noCoursLabel.Font = new Font("Segoe UI", 12F);
-            noCoursLabel.Location = new Point(43, 42);
+            noCoursLabel.Location = new Point(38, 32);
             noCoursLabel.Name = "noCoursLabel";
-            noCoursLabel.Size = new Size(163, 28);
+            noCoursLabel.Size = new Size(131, 21);
             noCoursLabel.TabIndex = 30;
             noCoursLabel.Text = "Numéro de cours";
             // 
             // noCoursTextBox
             // 
             noCoursTextBox.Font = new Font("Segoe UI", 12F);
-            noCoursTextBox.Location = new Point(233, 42);
+            noCoursTextBox.Location = new Point(204, 32);
             noCoursTextBox.Margin = new Padding(3, 2, 3, 2);
             noCoursTextBox.Name = "noCoursTextBox";
-            noCoursTextBox.Size = new Size(247, 34);
+            noCoursTextBox.Size = new Size(217, 29);
             noCoursTextBox.TabIndex = 29;
             // 
             // ajouterButton
             // 
             ajouterButton.Font = new Font("Segoe UI", 12F);
-            ajouterButton.Location = new Point(329, 239);
+            ajouterButton.Location = new Point(288, 179);
             ajouterButton.Margin = new Padding(3, 2, 3, 2);
             ajouterButton.Name = "ajouterButton";
-            ajouterButton.Size = new Size(151, 55);
+            ajouterButton.Size = new Size(132, 41);
             ajouterButton.TabIndex = 28;
             ajouterButton.Text = "Ajouter";
             ajouterButton.UseVisualStyleBackColor = true;
+            ajouterButton.Click += ajouterButton_Click;
             // 
             // ajouterCoursForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 355);
+            ClientSize = new Size(488, 266);
             Controls.Add(ponderationLabel);
             Controls.Add(ponderationTextBox);
             Controls.Add(nomCoursLlabel);
@@ -116,8 +117,10 @@
             Controls.Add(noCoursLabel);
             Controls.Add(noCoursTextBox);
             Controls.Add(ajouterButton);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ajouterCoursForm";
             Text = "Ajouter un cours";
+            Load += ajouterCoursForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
