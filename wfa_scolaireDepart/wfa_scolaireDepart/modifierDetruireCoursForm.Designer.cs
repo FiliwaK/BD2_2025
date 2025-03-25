@@ -202,6 +202,7 @@
             detruireAttachButton.TabIndex = 9;
             detruireAttachButton.Text = "Détruire Attach";
             detruireAttachButton.UseVisualStyleBackColor = true;
+            detruireAttachButton.Click += detruireAttachButton_Click;
             // 
             // modifierDetruireCoursForm
             // 

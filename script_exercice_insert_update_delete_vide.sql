@@ -304,3 +304,16 @@ select no_da,(select no_offreCours from tbl_offreCours where no_cours = '4204A2B
  where no_da > '2400031' and no_da < '2400040'
 go
 
+/* procedure stockée pour scanneur */
+
+create procedure ListerResultatEtudiant
+@no_Da nchar(7)
+as
+SELECT        tbl_etudiant.no_da, tbl_etudiant.nom, tbl_etudiant.prenom, tbl_inscription.note, tbl_cours.nom_cours, tbl_offreCours.no_session
+FROM            tbl_inscription 
+				INNER JOIN  tbl_etudiant ON tbl_inscription.no_da = tbl_etudiant.no_da 
+				INNER JOIN  tbl_offreCours ON tbl_inscription.no_offreCours = tbl_offreCours.no_offreCours 
+				INNER JOIN  tbl_cours ON tbl_offreCours.no_cours = tbl_cours.no_cours
+where			tbl_etudiant.no_da = @no_Da
+Order by		no_session, nom_cours 
+go

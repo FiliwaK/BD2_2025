@@ -167,6 +167,11 @@ namespace wfa_scolaireDepart
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void detruireAttachButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    
+
 }

@@ -54,13 +54,13 @@ namespace wfa_scolaireDepart.Manager
 
             using (var context = new k2fl_bdContext())
             {
-                MessageBox.Show(context.Entry(coursNonModif).State.ToString());
+                //MessageBox.Show(context.Entry(coursNonModif).State.ToString());
                 context.TblCours.Attach(coursNonModif); // coursNonModif c'est un objet trouver a partir d'un combo box , un objet existant 
-                MessageBox.Show(context.Entry(coursNonModif).State.ToString());
+                //MessageBox.Show(context.Entry(coursNonModif).State.ToString());
                 coursNonModif.NoCours = courModif.NoCours;
                 coursNonModif.NomCours = courModif.NomCours;
                 coursNonModif.Pond = courModif.Pond;
-                MessageBox.Show(context.Entry(coursNonModif).State.ToString());
+                //MessageBox.Show(context.Entry(coursNonModif).State.ToString());
                 nombreDeLigneAffectees = context.SaveChanges();
             }
             return nombreDeLigneAffectees;
@@ -80,6 +80,8 @@ namespace wfa_scolaireDepart.Manager
             }
             return nombreDeLigneAffectees;
         }
+
+
 
 
     }
