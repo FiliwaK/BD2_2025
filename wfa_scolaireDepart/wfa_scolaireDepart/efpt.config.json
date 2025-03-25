@@ -1,5 +1,5 @@
 ﻿{
-   "CodeGenerationMode": 4,
+   "CodeGenerationMode": 5,
    "ContextClassName": "k2fl_bdContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
@@ -37,6 +37,10 @@
       {
          "Name": "[dbo].[tbl_session]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ListerResultatEtudiant]",
+         "ObjectType": 1
       }
    ],
    "UiHint": null,

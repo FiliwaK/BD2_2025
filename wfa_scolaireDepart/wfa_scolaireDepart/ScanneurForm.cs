@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using wfa_scolaireDepart.Manager;
 
 namespace wfa_scolaireDepart
 {
@@ -15,6 +16,12 @@ namespace wfa_scolaireDepart
         public ScanneurForm()
         {
             InitializeComponent();
+        }
+
+        private void listerButton_Click(object sender, EventArgs e)
+        {
+            var managerEtudiant = new ManagerEtudiant();
+
         }
     }
 }
