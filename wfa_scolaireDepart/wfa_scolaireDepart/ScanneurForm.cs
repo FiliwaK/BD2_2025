@@ -18,10 +18,11 @@ namespace wfa_scolaireDepart
             InitializeComponent();
         }
 
-        private void listerButton_Click(object sender, EventArgs e)
+        private async void listerButton_Click(object sender, EventArgs e)//toujours mettre async et await partout ou on utilise une procedure stockée 
         {
             var managerEtudiant = new ManagerEtudiant();
-
+            var listeCours = await managerEtudiant.ListerCoursEtudiant(noDaTextBox.Text); //toujours mettre await lorsqu'on met le lien avec la bd 
+            resultatDataGridView.DataSource = listeCours;
         }
     }
 }

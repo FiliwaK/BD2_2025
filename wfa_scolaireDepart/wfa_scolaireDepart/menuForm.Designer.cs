@@ -32,6 +32,8 @@
             coursToolStripMenuItem = new ToolStripMenuItem();
             ajouterUnCoursToolStripMenuItem = new ToolStripMenuItem();
             modifierdétruireUnCoursToolStripMenuItem = new ToolStripMenuItem();
+            resultatsToolStripMenuItem = new ToolStripMenuItem();
+            resultatDunEtudiantToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,10 +41,11 @@
             // 
             menuStrip1.Font = new Font("Corbel", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { coursToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { coursToolStripMenuItem, resultatsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 36);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(700, 31);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -50,30 +53,45 @@
             // 
             coursToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ajouterUnCoursToolStripMenuItem, modifierdétruireUnCoursToolStripMenuItem });
             coursToolStripMenuItem.Name = "coursToolStripMenuItem";
-            coursToolStripMenuItem.Size = new Size(81, 32);
+            coursToolStripMenuItem.Size = new Size(67, 27);
             coursToolStripMenuItem.Text = "Cours";
             // 
             // ajouterUnCoursToolStripMenuItem
             // 
             ajouterUnCoursToolStripMenuItem.Name = "ajouterUnCoursToolStripMenuItem";
-            ajouterUnCoursToolStripMenuItem.Size = new Size(343, 32);
+            ajouterUnCoursToolStripMenuItem.Size = new Size(281, 28);
             ajouterUnCoursToolStripMenuItem.Text = "Ajouter un cours";
             ajouterUnCoursToolStripMenuItem.Click += ajouterUnCoursToolStripMenuItem_Click;
             // 
             // modifierdétruireUnCoursToolStripMenuItem
             // 
             modifierdétruireUnCoursToolStripMenuItem.Name = "modifierdétruireUnCoursToolStripMenuItem";
-            modifierdétruireUnCoursToolStripMenuItem.Size = new Size(343, 32);
+            modifierdétruireUnCoursToolStripMenuItem.Size = new Size(281, 28);
             modifierdétruireUnCoursToolStripMenuItem.Text = "Modifier/détruire un cours";
             modifierdétruireUnCoursToolStripMenuItem.Click += modifierdétruireUnCoursToolStripMenuItem_Click;
             // 
+            // resultatsToolStripMenuItem
+            // 
+            resultatsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resultatDunEtudiantToolStripMenuItem });
+            resultatsToolStripMenuItem.Name = "resultatsToolStripMenuItem";
+            resultatsToolStripMenuItem.Size = new Size(95, 27);
+            resultatsToolStripMenuItem.Text = "Resultats";
+            // 
+            // resultatDunEtudiantToolStripMenuItem
+            // 
+            resultatDunEtudiantToolStripMenuItem.Name = "resultatDunEtudiantToolStripMenuItem";
+            resultatDunEtudiantToolStripMenuItem.Size = new Size(248, 28);
+            resultatDunEtudiantToolStripMenuItem.Text = "resultat d'un etudiant";
+            resultatDunEtudiantToolStripMenuItem.Click += resultatDunEtudiantToolStripMenuItem_Click;
+            // 
             // menuForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "menuForm";
             Text = "Menu";
             menuStrip1.ResumeLayout(false);
@@ -88,5 +106,7 @@
         private ToolStripMenuItem coursToolStripMenuItem;
         private ToolStripMenuItem ajouterUnCoursToolStripMenuItem;
         private ToolStripMenuItem modifierdétruireUnCoursToolStripMenuItem;
+        private ToolStripMenuItem resultatsToolStripMenuItem;
+        private ToolStripMenuItem resultatDunEtudiantToolStripMenuItem;
     }
 }

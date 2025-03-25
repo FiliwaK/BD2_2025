@@ -82,7 +82,5 @@ namespace wfa_scolaireDepart.Manager
         }
 
 
-
-
     }
 }

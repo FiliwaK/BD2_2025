@@ -28,5 +28,11 @@ namespace wfa_scolaireDepart
             var maForme = new modifierDetruireCoursForm();
             maForme.ShowDialog();
         }
+
+        private void resultatDunEtudiantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var maForme = new ScanneurForm();
+            maForme.ShowDialog();
+        }
     }
 }
