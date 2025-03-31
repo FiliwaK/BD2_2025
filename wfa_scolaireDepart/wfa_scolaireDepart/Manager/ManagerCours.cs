@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+//using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using wfa_scolaireDepart.Models;
 
 namespace wfa_scolaireDepart.Manager
@@ -13,14 +16,35 @@ namespace wfa_scolaireDepart.Manager
         {
             int nombreDeLigneAffectees = 0;
 
-            using(var context = new k2fl_bdContext())
+            try
             {
+
+
+                using(var context = new k2fl_bdContext())
+                {
                 //MessageBox.Show(context.Entry(cours).State.ToString());
                 context.TblCours.Add(cours);
                 //MessageBox.Show(context.Entry(cours).State.ToString());
                 nombreDeLigneAffectees = context.SaveChanges();
+                }
+
             }
-                return nombreDeLigneAffectees;
+            catch (DbUpdateException ExDbUpdate)
+            {
+                var errorMessage = "Erreur, corrigez puis réessayer. \n\r";
+                if (ExDbUpdate.InnerException is SqlException sqlException)
+                {
+                    errorMessage += $" Error Number: {sqlException.Number}\n\r Message: {sqlException.Message}\n\r";
+                }
+                throw new Exception(errorMessage);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return nombreDeLigneAffectees;
+
         }
 
         public List<TblCour> Listercours()

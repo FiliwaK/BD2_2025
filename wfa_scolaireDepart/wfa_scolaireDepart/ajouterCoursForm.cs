@@ -13,8 +13,8 @@ namespace wfa_scolaireDepart
 
         private void ajouterCoursForm_Load(object sender, EventArgs e)
         {
-            noCoursTextBox.MaxLength = 8;
-            ponderationTextBox.MaxLength = 5;
+            //noCoursTextBox.MaxLength = 8;
+            //ponderationTextBox.MaxLength = 5;
         }
 
         private Boolean ChampsRemplits()

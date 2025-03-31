@@ -298,3 +298,11 @@ C:\Users\2342864.CORPORATIF\Downloads\wfa_scolaireDepart\wfa_scolaireDepart\obj\
 C:\Users\2342864.CORPORATIF\Downloads\wfa_scolaireDepart\wfa_scolaireDepart\obj\Debug\net9.0-windows7.0\wfa_scolaireDepart.genruntimeconfig.cache
 C:\Users\2342864.CORPORATIF\Downloads\wfa_scolaireDepart\wfa_scolaireDepart\obj\Debug\net9.0-windows7.0\ref\wfa_scolaireDepart.dll
 C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\obj\Debug\net9.0-windows7.0\wfa_scolaireDepart.ScanneurForm.resources
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\EntityFramework.SqlServer.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\EntityFramework.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\System.Data.SqlClient.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\runtimes\win-arm64\native\sni.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\runtimes\win-x64\native\sni.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\runtimes\win-x86\native\sni.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\2342864.CORPORATIF\Documents\GitHub\BD2_2025\wfa_scolaireDepart\wfa_scolaireDepart\bin\Debug\net9.0-windows7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
