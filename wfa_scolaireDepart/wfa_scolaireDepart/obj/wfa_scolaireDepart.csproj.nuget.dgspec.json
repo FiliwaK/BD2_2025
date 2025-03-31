@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2342864.CORPORATIF\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj": {}
+    "C:\\Users\\TEMP.CORPORATIF.001\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2342864.CORPORATIF\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj": {
+    "C:\\Users\\TEMP.CORPORATIF.001\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2342864.CORPORATIF\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj",
+        "projectUniqueName": "C:\\Users\\TEMP.CORPORATIF.001\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj",
         "projectName": "wfa_scolaireDepart",
-        "projectPath": "C:\\Users\\2342864.CORPORATIF\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj",
-        "packagesPath": "C:\\Users\\2342864.CORPORATIF\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2342864.CORPORATIF\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\obj\\",
+        "projectPath": "C:\\Users\\TEMP.CORPORATIF.001\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\wfa_scolaireDepart.csproj",
+        "packagesPath": "C:\\Users\\TEMP.CORPORATIF.001\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TEMP.CORPORATIF.001\\Documents\\GitHub\\BD2_2025\\wfa_scolaireDepart\\wfa_scolaireDepart\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\2342864.CORPORATIF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TEMP.CORPORATIF.001\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

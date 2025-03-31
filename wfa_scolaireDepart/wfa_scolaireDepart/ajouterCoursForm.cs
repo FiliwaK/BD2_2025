@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.IdentityModel.Tokens;
 using wfa_scolaireDepart.Manager;
 using wfa_scolaireDepart.Models;
@@ -42,6 +43,18 @@ namespace wfa_scolaireDepart
             ponderationTextBox.Clear();
         }
 
+        private Boolean EstUnFormatDeCoursValid(TblCour cours)
+        {
+            var validationContext = new ValidationContext(cours);
+            var validationResults = new List<ValidationResult>();
+            bool estValide = Validator.TryValidateObject(cours, validationContext, validationResults, true);
+            if (!estValide)
+            {
+                string messageErreur = string.Join("\n", validationResults.Select(r => r.ErrorMessage));
+                MessageBox.Show(messageErreur, "Erreur de validation");
+            }
+            return estValide;
+        }
 
         private void ajouterButton_Click(object sender, EventArgs e)
         {
@@ -54,16 +67,20 @@ namespace wfa_scolaireDepart
                 if (ChampsRemplits())
                 {
                     cours = RemplirInformation();
-                    nombreDeLigneAffectees = managerCours.AjouterCours(cours);
-                    if (nombreDeLigneAffectees > 0)
+                    if (EstUnFormatDeCoursValid(cours))
                     {
-                        MessageBox.Show("nombre de ligne affectées est : " + nombreDeLigneAffectees + " lignes");
-                        ViderChamps();
+                        nombreDeLigneAffectees = managerCours.AjouterCours(cours);
+                        if (nombreDeLigneAffectees > 0)
+                        {
+                            MessageBox.Show("nombre de ligne affectées est : " + nombreDeLigneAffectees + " lignes");
+                            ViderChamps();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Respecter les contraintes de la base de donnée");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Respecter les contraintes de la base de donnée");
-                    }
+                    
 
                 }
                 else 

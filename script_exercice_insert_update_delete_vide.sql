@@ -317,3 +317,20 @@ FROM            tbl_inscription
 where			tbl_etudiant.no_da = @no_Da
 Order by		no_session, nom_cours 
 go
+
+create or alter procedure nombreCoursSession
+		@session nchar(5) 
+		as
+		select count(distinct no_cours) as 'nombre de cours'
+		from tbl_offreCours
+		where no_session = @session
+		go
+
+create or alter procedure nombreCoursSessionOutput
+		@session nchar(5),
+		@nombreCours int output 
+		as 
+		select @nombreCours = count(distinct no_cours)
+		from tbl_offreCours
+		where no_session = @session
+		go

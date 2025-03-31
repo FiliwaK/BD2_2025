@@ -13,7 +13,7 @@ public partial class TblCour
 {
     [Key]
     [Column("no_cours")]
-    [StringLength(8)]
+    [StringLength(8, ErrorMessage = "le no de cours est trop long, maximum 8")]//dataAnnotations
     public string NoCours { get; set; }
 
     [Column("nom_cours")]
@@ -22,6 +22,7 @@ public partial class TblCour
 
     [Column("pond")]
     [StringLength(5)]
+    //[Range (1, 100)]
     public string Pond { get; set; }
 
     [InverseProperty("NoCoursNavigation")]
