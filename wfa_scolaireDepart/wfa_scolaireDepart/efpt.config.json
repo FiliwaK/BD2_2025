@@ -41,6 +41,14 @@
       {
          "Name": "[dbo].[ListerResultatEtudiant]",
          "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[nombreCoursSession]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[nombreCoursSessionOutput]",
+         "ObjectType": 1
       }
    ],
    "UiHint": null,

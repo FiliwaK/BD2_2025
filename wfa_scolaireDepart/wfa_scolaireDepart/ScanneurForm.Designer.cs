@@ -32,8 +32,10 @@
             noDaTextBox = new TextBox();
             resultatDataGridView = new DataGridView();
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            spButton = new Button();
+            spOutputButton = new Button();
+            label2 = new Label();
+            sessionTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)resultatDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -71,31 +73,51 @@
             label1.TabIndex = 3;
             label1.Text = "No DA";
             // 
-            // button1
+            // spButton
             // 
-            button1.Location = new Point(295, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(138, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Lister Resultats";
-            button1.UseVisualStyleBackColor = true;
+            spButton.Location = new Point(158, 12);
+            spButton.Name = "spButton";
+            spButton.Size = new Size(234, 23);
+            spButton.TabIndex = 4;
+            spButton.Text = "nombre de cours par session";
+            spButton.UseVisualStyleBackColor = true;
+            spButton.Click += spButton_Click;
             // 
-            // button2
+            // spOutputButton
             // 
-            button2.Location = new Point(467, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(138, 23);
-            button2.TabIndex = 5;
-            button2.Text = "Lister Resultats";
-            button2.UseVisualStyleBackColor = true;
+            spOutputButton.Location = new Point(421, 12);
+            spOutputButton.Name = "spOutputButton";
+            spOutputButton.Size = new Size(213, 23);
+            spOutputButton.TabIndex = 5;
+            spOutputButton.Text = "nombre de par session output";
+            spOutputButton.UseVisualStyleBackColor = true;
+            spOutputButton.Click += spOutputButton_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(120, 113);
+            label2.Name = "label2";
+            label2.Size = new Size(46, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Session";
+            // 
+            // sessionTextBox
+            // 
+            sessionTextBox.Location = new Point(202, 110);
+            sessionTextBox.Name = "sessionTextBox";
+            sessionTextBox.Size = new Size(151, 23);
+            sessionTextBox.TabIndex = 6;
             // 
             // ScanneurForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(label2);
+            Controls.Add(sessionTextBox);
+            Controls.Add(spOutputButton);
+            Controls.Add(spButton);
             Controls.Add(label1);
             Controls.Add(resultatDataGridView);
             Controls.Add(noDaTextBox);
@@ -113,7 +135,9 @@
         private TextBox noDaTextBox;
         private DataGridView resultatDataGridView;
         private Label label1;
-        private Button button1;
-        private Button button2;
+        private Button spButton;
+        private Button spOutputButton;
+        private Label label2;
+        private TextBox sessionTextBox;
     }
 }

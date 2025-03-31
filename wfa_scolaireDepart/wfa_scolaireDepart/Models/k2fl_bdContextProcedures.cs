@@ -69,5 +69,68 @@ namespace wfa_scolaireDepart.Models
 
             return _;
         }
+
+        public virtual async Task<List<nombreCoursSessionResult>> nombreCoursSessionAsync(string session, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "session",
+                    Size = 10,
+                    Value = session ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<nombreCoursSessionResult>("EXEC @returnValue = [dbo].[nombreCoursSession] @session = @session", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        public virtual async Task<int> nombreCoursSessionOutputAsync(string session, OutputParameter<int?> nombreCours, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameternombreCours = new SqlParameter
+            {
+                ParameterName = "nombreCours",
+                Direction = System.Data.ParameterDirection.InputOutput,
+                Value = nombreCours?._value ?? Convert.DBNull,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "session",
+                    Size = 10,
+                    Value = session ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NChar,
+                },
+                parameternombreCours,
+                parameterreturnValue,
+            };
+            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[nombreCoursSessionOutput] @session = @session, @nombreCours = @nombreCours OUTPUT", sqlParameters, cancellationToken);
+
+            nombreCours?.SetValue(parameternombreCours.Value);
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
     }
 }

@@ -35,7 +35,7 @@ public partial class k2fl_bdContext : DbContext
     {
         modelBuilder.Entity<TblCour>(entity =>
         {
-            entity.HasKey(e => e.NoCours).HasName("PK__tbl_cour__1297542F84E471D7");
+            entity.HasKey(e => e.NoCours).HasName("PK__tbl_cour__1297542FFBEE1D42");
 
             entity.Property(e => e.NoCours).IsFixedLength();
             entity.Property(e => e.Pond)
@@ -95,7 +95,7 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblEtudiant>(entity =>
         {
-            entity.HasKey(e => e.NoDa).HasName("PK__tbl_etud__E2D4DBFAD3DEC9A9");
+            entity.HasKey(e => e.NoDa).HasName("PK__tbl_etud__E2D4DBFAE44A08CA");
 
             entity.Property(e => e.NoDa).IsFixedLength();
         });
@@ -117,7 +117,7 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblOffreCour>(entity =>
         {
-            entity.HasKey(e => e.NoOffreCours).HasName("PK__tbl_offr__42BFB7145F720F7D");
+            entity.HasKey(e => e.NoOffreCours).HasName("PK__tbl_offr__42BFB7143312AAAC");
 
             entity.Property(e => e.NoCours).IsFixedLength();
             entity.Property(e => e.NoSession).IsFixedLength();
@@ -129,7 +129,7 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblSession>(entity =>
         {
-            entity.HasKey(e => e.NoSession).HasName("PK__tbl_sess__6DBB4FB923437FE2");
+            entity.HasKey(e => e.NoSession).HasName("PK__tbl_sess__6DBB4FB980F67C9C");
 
             entity.Property(e => e.NoSession).IsFixedLength();
         });
