@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;//pour les validations clients
 using Microsoft.IdentityModel.Tokens;
 using wfa_scolaireDepart.Manager;
 using wfa_scolaireDepart.Models;
