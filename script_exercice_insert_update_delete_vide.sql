@@ -334,3 +334,50 @@ create or alter procedure nombreCoursSessionOutput
 		from tbl_offreCours
 		where no_session = @session
 		go
+
+
+
+insert into tbl_etudiant (no_da,prenom,nom,email)
+select '23000' + str(businessEntityID,2) as Contact_ID,FirstName,LastName, FirstName + LastName + '@'+'gmail.com'
+from AdventureWorks2022.Person.person
+where businessEntityID >30 and businessEntityID< 40
+go
+/*select * from tbl_etudiant
+select * from tbl_inscription
+select * from tbl_offreCours
+select * from tbl_session
+*/
+
+insert into tbl_session (no_session)
+values ('H2023')
+go
+insert into tbl_offreCours (no_session,no_cours)
+values('H2023','4204A2BA')
+go
+
+
+insert into tbl_inscription(no_da,no_offreCours)
+select no_da,(select no_offreCours from tbl_offreCours where no_cours = '4204A2BA' and no_session ='H2023') from tbl_etudiant
+ where no_da > '2300031' and no_da < '2300040'
+go
+
+create or alter view VueListerResultat 
+as
+select tbl_inscription.no_da, nom, prenom, note, tbl_inscription.no_offreCours 
+from tbl_etudiant inner join tbl_inscription 
+on tbl_etudiant.no_da = tbl_inscription.no_da
+go
+
+--faut toujours mettre tous les selects de la vue dans les parametre de modification et dans le meme ordre
+
+create procedure ModifierNoteEtudiant
+@no_da nchar(7),
+@no_offreCours int,
+@note decimal(5,2),
+@nom nvarchar(100),
+@prenom nvarchar(100)
+as
+update VueListerResultat
+set note = @note 
+where no_da = @no_da and no_offreCours = @no_offreCours
+go
