@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using wfa_scolaireDepart.Manager;
 
 namespace wfa_scolaireDepart
 {
@@ -32,6 +33,12 @@ namespace wfa_scolaireDepart
         private void resultatDunEtudiantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var maForme = new ScanneurForm();
+            maForme.ShowDialog();
+        }
+
+        private void viewEtudiantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var maForme = new viewForm();
             maForme.ShowDialog();
         }
     }

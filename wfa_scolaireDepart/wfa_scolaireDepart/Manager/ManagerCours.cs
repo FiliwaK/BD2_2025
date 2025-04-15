@@ -12,6 +12,23 @@ namespace wfa_scolaireDepart.Manager
 {
     public class ManagerCours
     {
+        public List<TblCour> ListerCoursEagerLoading()
+        {
+            try
+            {
+                using (var context = new k2fl_bdContext())
+                {
+                    return context.TblCours.Include(c => c.TblOffreCours).OrderBy(c=> c.NomCours).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         public int AjouterCours(TblCour cours)
         {
             int nombreDeLigneAffectees = 0;

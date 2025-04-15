@@ -34,6 +34,7 @@
             modifierdétruireUnCoursToolStripMenuItem = new ToolStripMenuItem();
             resultatsToolStripMenuItem = new ToolStripMenuItem();
             resultatDunEtudiantToolStripMenuItem = new ToolStripMenuItem();
+            viewEtudiantToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             // 
             // resultatsToolStripMenuItem
             // 
-            resultatsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resultatDunEtudiantToolStripMenuItem });
+            resultatsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resultatDunEtudiantToolStripMenuItem, viewEtudiantToolStripMenuItem });
             resultatsToolStripMenuItem.Name = "resultatsToolStripMenuItem";
             resultatsToolStripMenuItem.Size = new Size(95, 27);
             resultatsToolStripMenuItem.Text = "Resultats";
@@ -83,6 +84,13 @@
             resultatDunEtudiantToolStripMenuItem.Size = new Size(248, 28);
             resultatDunEtudiantToolStripMenuItem.Text = "resultat d'un etudiant";
             resultatDunEtudiantToolStripMenuItem.Click += resultatDunEtudiantToolStripMenuItem_Click;
+            // 
+            // viewEtudiantToolStripMenuItem
+            // 
+            viewEtudiantToolStripMenuItem.Name = "viewEtudiantToolStripMenuItem";
+            viewEtudiantToolStripMenuItem.Size = new Size(248, 28);
+            viewEtudiantToolStripMenuItem.Text = "view etudiant";
+            viewEtudiantToolStripMenuItem.Click += viewEtudiantToolStripMenuItem_Click;
             // 
             // menuForm
             // 
@@ -108,5 +116,6 @@
         private ToolStripMenuItem modifierdétruireUnCoursToolStripMenuItem;
         private ToolStripMenuItem resultatsToolStripMenuItem;
         private ToolStripMenuItem resultatDunEtudiantToolStripMenuItem;
+        private ToolStripMenuItem viewEtudiantToolStripMenuItem;
     }
 }
