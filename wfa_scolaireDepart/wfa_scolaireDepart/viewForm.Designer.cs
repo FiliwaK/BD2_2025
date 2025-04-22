@@ -44,6 +44,7 @@
             coursComboBox.Name = "coursComboBox";
             coursComboBox.Size = new Size(283, 23);
             coursComboBox.TabIndex = 0;
+            coursComboBox.SelectionChangeCommitted += coursComboBox_SelectionChangeCommitted;
             // 
             // sessionComboBox
             // 
@@ -52,6 +53,7 @@
             sessionComboBox.Name = "sessionComboBox";
             sessionComboBox.Size = new Size(283, 23);
             sessionComboBox.TabIndex = 1;
+            sessionComboBox.SelectionChangeCommitted += sessionComboBox_SelectionChangeCommitted;
             // 
             // label1
             // 

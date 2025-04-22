@@ -70,6 +70,61 @@ namespace wfa_scolaireDepart.Models
             return _;
         }
 
+        public virtual async Task<int> ModifierNoteEtudiantAsync(string no_da, int? no_offreCours, decimal? note, string nom, string prenom, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "no_da",
+                    Size = 14,
+                    Value = no_da ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "no_offreCours",
+                    Value = no_offreCours ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "note",
+                    Precision = 5,
+                    Scale = 2,
+                    Value = note ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Decimal,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "nom",
+                    Size = 200,
+                    Value = nom ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "prenom",
+                    Size = 200,
+                    Value = prenom ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.NVarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[ModifierNoteEtudiant] @no_da = @no_da, @no_offreCours = @no_offreCours, @note = @note, @nom = @nom, @prenom = @prenom", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<nombreCoursSessionResult>> nombreCoursSessionAsync(string session, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter

@@ -39,7 +39,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[vueListerResultat]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[dbo].[ListerResultatEtudiant]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[ModifierNoteEtudiant]",
          "ObjectType": 1
       },
       {

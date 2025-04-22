@@ -29,5 +29,15 @@ namespace wfa_scolaireDepart.Manager
             return (int)note.Value;
         }
 
+        public List<VueListerResultat> listerResultat(int noOfrreCours)
+        {
+
+            using (var context = new k2fl_bdContext())
+            {
+                return context.VueListerResultats.Where(v => v.NoOffreCours == noOfrreCours).OrderBy(v => v.Note).ToList();
+            }
+
+             
+        }
     }
 }

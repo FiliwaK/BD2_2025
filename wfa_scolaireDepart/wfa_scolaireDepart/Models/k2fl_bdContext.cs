@@ -27,6 +27,8 @@ public partial class k2fl_bdContext : DbContext
 
     public virtual DbSet<TblSession> TblSessions { get; set; }
 
+    public virtual DbSet<VueListerResultat> VueListerResultats { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=bd-tinfo;Initial Catalog=k2fl_bd;Integrated Security=True;Encrypt=False");
@@ -35,7 +37,7 @@ public partial class k2fl_bdContext : DbContext
     {
         modelBuilder.Entity<TblCour>(entity =>
         {
-            entity.HasKey(e => e.NoCours).HasName("PK__tbl_cour__1297542FFBEE1D42");
+            entity.HasKey(e => e.NoCours).HasName("PK__tbl_cour__1297542FBA1FB6CF");
 
             entity.Property(e => e.NoCours).IsFixedLength();
             entity.Property(e => e.Pond)
@@ -95,7 +97,7 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblEtudiant>(entity =>
         {
-            entity.HasKey(e => e.NoDa).HasName("PK__tbl_etud__E2D4DBFAE44A08CA");
+            entity.HasKey(e => e.NoDa).HasName("PK__tbl_etud__E2D4DBFA1752128D");
 
             entity.Property(e => e.NoDa).IsFixedLength();
         });
@@ -117,7 +119,7 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblOffreCour>(entity =>
         {
-            entity.HasKey(e => e.NoOffreCours).HasName("PK__tbl_offr__42BFB7143312AAAC");
+            entity.HasKey(e => e.NoOffreCours).HasName("PK__tbl_offr__42BFB714607BB8DE");
 
             entity.Property(e => e.NoCours).IsFixedLength();
             entity.Property(e => e.NoSession).IsFixedLength();
@@ -129,9 +131,16 @@ public partial class k2fl_bdContext : DbContext
 
         modelBuilder.Entity<TblSession>(entity =>
         {
-            entity.HasKey(e => e.NoSession).HasName("PK__tbl_sess__6DBB4FB980F67C9C");
+            entity.HasKey(e => e.NoSession).HasName("PK__tbl_sess__6DBB4FB930212307");
 
             entity.Property(e => e.NoSession).IsFixedLength();
+        });
+
+        modelBuilder.Entity<VueListerResultat>(entity =>
+        {
+            entity.ToView("vueListerResultat");
+
+            entity.Property(e => e.NoDa).IsFixedLength();
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -23,10 +23,8 @@ namespace wfa_scolaireDepart.Manager
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
         public int AjouterCours(TblCour cours)

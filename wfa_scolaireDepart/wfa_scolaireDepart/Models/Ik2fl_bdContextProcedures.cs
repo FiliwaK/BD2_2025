@@ -14,6 +14,7 @@ namespace wfa_scolaireDepart.Models
     public partial interface Ik2fl_bdContextProcedures
     {
         Task<List<ListerResultatEtudiantResult>> ListerResultatEtudiantAsync(string no_Da, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<int> ModifierNoteEtudiantAsync(string no_da, int? no_offreCours, decimal? note, string nom, string prenom, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<nombreCoursSessionResult>> nombreCoursSessionAsync(string session, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> nombreCoursSessionOutputAsync(string session, OutputParameter<int?> nombreCours, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
     }
