@@ -80,6 +80,7 @@
             etudiantDataGridView.Name = "etudiantDataGridView";
             etudiantDataGridView.Size = new Size(577, 246);
             etudiantDataGridView.TabIndex = 4;
+            etudiantDataGridView.CellEndEdit += etudiantDataGridView_CellEndEdit;
             // 
             // label3
             // 

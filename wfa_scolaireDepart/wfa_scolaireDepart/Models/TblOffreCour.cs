@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace wfa_scolaireDepart.Models;
 
 [Table("tbl_offreCours")]
-[Index("NoSession", "NoCours", Name = "Contrainte_unique", IsUnique = true)]
+//[Index("NoSession", "NoCours", Name = "Contrainte_unique", IsUnique = true)]
 public partial class TblOffreCour
 {
     [Key]

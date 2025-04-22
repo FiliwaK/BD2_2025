@@ -15,6 +15,7 @@ namespace wfa_scolaireDepart.Manager
     {
         List<TblCour> listerCours;// car on est eagle loading
         TblCour coursRecherche;
+        ManagerOffreCours managerOffreCours = new ManagerOffreCours();// apres ce qu'on faire des modications dans les vues
 
         public viewForm()
         {
@@ -48,10 +49,21 @@ namespace wfa_scolaireDepart.Manager
             string sessionChoisi = sessionComboBox.SelectedValue.ToString();
             string noCoursChoisi = coursComboBox.SelectedValue.ToString();
             int noOffreCours = coursRecherche.TblOffreCours.Where(o => o.NoCours == noCoursChoisi && o.NoSession == sessionChoisi).FirstOrDefault().NoOffreCours;
-
-            var managerOffreCours = new ManagerOffreCours();
             etudiantDataGridView.DataSource = managerOffreCours.listerResultat(noOffreCours);
+            
+        }
 
+        private void etudiantDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int nombreLigneAffectee = managerOffreCours.EnregistrerChangementNote();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
