@@ -381,3 +381,78 @@ update VueListerResultat
 set note = @note 
 where no_da = @no_da and no_offreCours = @no_offreCours
 go
+
+/* ajout de quelques données */
+insert into tbl_etudiant (no_da,nom,prenom)  values ('2300060','Roy','Luc')
+go
+insert into tbl_inscription(no_offreCours,no_da) 
+values ((select no_offreCours  from tbl_offreCours where no_cours = '4203B2BA' and no_session = 'H2025'),
+		'2300060')
+go
+insert into tbl_session (no_session)values ('A2023')
+go
+insert into tbl_offreCours(no_cours,no_session)
+values('4203B2BA','A2023')
+go
+insert into tbl_inscription(no_offreCours,no_da)  
+values ((select no_offreCours  from tbl_offreCours where no_cours = '4203B2BA' and no_session = 'A2023'),
+		'2300060')
+go
+select * from tbl_etudiant where no_da = '2300060'
+select * from tbl_inscription where no_da = '2300060'
+select * from tbl_offreCours
+go
+
+/* creation d'une procedure stockée sans transaction avec une erreur */
+
+create proc detruireEtudiantEtInscription
+@no_etudiant nchar(7)
+as
+delete from tbl_inscription where no_da = @no_etudiant
+/* erreur provoquée : contrainte de reference :no_offreCours inexistant*/
+insert into tbl_inscription (no_da,no_offreCours) values ('2300060',100)
+delete from tbl_etudiant where no_da = @no_etudiant
+go
+
+/* execution pouvant provoquer une mauvaise intégrité des données car 1 des instructions n'est pas effectuées */
+
+exec detruireEtudiantEtInscription '2300060'
+select * from tbl_etudiant where no_da = '2300060'
+select * from tbl_inscription where no_da = '2300060'
+
+/* ajout de transactions dans notre procedure */
+
+alter proc detruireEtudiantEtInscription
+@no_etudiant nchar(7)
+as
+begin try
+	set nocount on
+	begin transaction
+		delete from tbl_inscription where no_da = @no_etudiant
+		/* erreur provoquée : contrainte de reference :no_offreCours inexistant*/
+		insert into tbl_inscription (no_da,no_offreCours) values ('2300060',100)
+		delete from tbl_etudiant where no_da = @no_etudiant
+	commit transaction
+end try
+begin catch
+	if @@trancount > 0
+		begin
+			rollback transaction;
+			throw 51000,'problème durant l''exécution, la destruction est annulée',1; /* no erreur > 50 000 et < 2 147 483 647 , state entre 0 et 255 (sévérité)*/
+		end
+end catch
+go
+
+/* remettre les données*/
+insert into tbl_etudiant (no_da,nom,prenom)  values ('2300060','Roy','Luc')
+insert into tbl_inscription(no_offreCours,no_da) 
+values ((select no_offreCours  from tbl_offreCours where no_cours = '4203B2BA' and no_session = 'H2025'),
+		'2300060')
+insert into tbl_inscription(no_offreCours,no_da)  
+values ((select no_offreCours  from tbl_offreCours where no_cours = '4203B2BA' and no_session = 'A2023'),
+		'2300060')
+/* essaie de la procedure  avec l'erreur (rien n'est détruit), puis essayer sans l'erreur, tout est détruit */
+exec detruireEtudiantEtInscription '2300060'
+
+select * from tbl_etudiant where no_da = '2300060'
+select * from tbl_inscription where no_da = '2300060'
