@@ -39,7 +39,7 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[vueListerResultat]",
+         "Name": "[dbo].[VueListerResultat]",
          "ObjectType": 3
       },
       {

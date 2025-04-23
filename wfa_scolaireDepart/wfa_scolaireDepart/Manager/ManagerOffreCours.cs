@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,13 +49,25 @@ namespace wfa_scolaireDepart.Manager
             {
                 nombreLigne = Context.SaveChanges();
 
-                return nombreLigne;
+            }
+            catch(Microsoft.EntityFrameworkCore.DbUpdateException ex)
+            {
+                //if (ex.InnerException is SqlException sqlException)
+                {
+                    if (ex.InnerException.Message.Contains("CHECK") && ex.InnerException.Message.Contains("note"))
+                    {
+                        MessageBox.Show("La note doit etre entre 0 et 100");
+                        var ligneErreur = ex.Entries.Single();
+                        ligneErreur.Property("Note").CurrentValue = ligneErreur.Property("Note").OriginalValue;
+                    }
+                }
             }
             catch (Exception)
             {
 
                 throw;
             }
+            return nombreLigne;
         }
     }
 }
